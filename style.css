@@ -1,0 +1,194 @@
+@font-face {
+    font-family: 'faster-one';
+    src: url('./font/fasterone-regular-webfont.woff2') format('woff2'),
+         url('./font/fasterone-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'merriweather_sans-regular';
+    src: url('./font/merriweathersans-regular-webfont.woff2') format('woff2'),
+         url('./font/merriweathersans-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* css reset */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+* {
+    font-size: 14px;
+    margin: 0;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  input, button, a {
+    font: inherit;
+  }
+
+  p {
+    overflow-wrap: break-word;
+    text-wrap: pretty;
+  }
+ /* styles */
+ /* *{
+   
+ } */
+ :root {
+    --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --beige-color: #a98f7d;
+    /* --beige-color: #a68772; */
+    --brown-color: #7f5340;
+    --black-color: #050505d7;
+    --green-color: #3b6827;
+    --white-color: #f5f5f5dd;
+    --logo-background: rgba(0, 0, 0, 0.34);
+    --form-background: rgba(255, 255, 255, 0.998);
+}
+*{
+    font-family: 'merriweather_sans-regular';
+}
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%; 
+}
+.visuals-container, .content-container {
+    display:flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.visuals-container{
+    position: relative;
+}
+.sidebar-pic{
+    height: 100vh;
+}
+.logo-container{
+    display: flex;
+    justify-content: center;  
+    align-items: center; 
+    position: absolute;
+    background-color: var(--logo-background);
+    color: white;
+    bottom: 6rem;
+    padding: 4rem;
+    width: 100%;
+    gap: 40px;
+}
+
+.logo{
+min-width: 4rem;
+fill: var(--white-color);
+width: 8rem;
+}
+
+.logo-text{
+    font-size: 3rem;
+    font-family: 'faster-one', var(--system-ui);
+    color: var(--white-color);
+    line-height: 1;
+}
+
+.credits{
+    padding: 1rem;
+    position: absolute;
+    bottom: 0;
+    color: var(--white-color);
+    align-self: center;
+    font-size: 0.8rem;
+}
+
+/* form side style */
+.content-container{
+    background-color: var(--white-color);
+    color: var(--black-color);
+    width: 100%;
+    flex: 1;
+}
+
+.content-container > div > p,
+.form-container > form > div.form-row
+{
+    margin-top: 1rem; 
+    margin-bottom: 1rem; 
+}
+
+.content-container > div.header > p,
+.content-container > div.form-container > p
+{
+    font-size: 1.2rem;
+}
+
+.form-container > form > div.form-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.content-container > div.form-container > p{
+margin-bottom: 1.5rem;
+}
+
+/* input{
+    position: absolute;
+}
+label{
+    position: relative;
+} */
+
+.header, .form-container, .footer{
+    padding: 2rem;  
+}
+
+ .form-container{
+   background-color: var(--form-background);
+   /* background-color: var(--black-color);
+    color: var(--beige-color); */
+ }
+
+ button{
+    width: 20rem;
+    background-color: var(--black-color);
+    color: var(--beige-color);
+    border: 1px solid var(--black-color);
+    border-radius: 10px;
+    padding: 0.7rem 0.9rem;
+}
+
+/* general */
+
+span.italic{
+    font-style: italic;
+    font-size: inherit;
+}
+
+a{
+    text-decoration: none;
+    color: var(--green-color);
+}
+a:hover{
+    text-decoration: underline;
+}
+a:visited{
+    color: var(--brown-color);
+}
+
+
+/* problems
+logo-container does not fit when zooming */
