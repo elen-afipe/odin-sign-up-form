@@ -44,6 +44,21 @@ body {
     overflow-wrap: break-word;
     text-wrap: pretty;
   }
+
+  input:-webkit-autofill {
+    font-family: inherit;
+    border: none;
+    border-radius: .3rem;
+    caret-color: var(--black-color); /* Pour le I quand on édite */
+    color: var(--black-color);
+    background: var(--black-color);
+    /* webkit autofill */
+    -webkit-font-feature-settings: off;
+    -webkit-text-fill-color: var(--black-color); /* Surcharge la font color d'autofill */
+    -webkit-background-clip: text; /* Supprime le background autofill, utile pour le border radius */
+    box-shadow: 0 0 0 50px var(var(--black-color)) inset; /* Ajoute un fake background à base d'ombrage aplatit */
+}
+
  /* styles */
  /* *{
    
@@ -64,7 +79,7 @@ body {
 }
 .container {
     display: flex;
-    height: 100vh;
+    height: 120vh;
     width: 100%; 
 }
 .visuals-container, .content-container {
@@ -75,9 +90,12 @@ body {
 
 .visuals-container{
     position: relative;
+    width: 40%;
+
 }
 .sidebar-pic{
-    height: 100vh;
+    height: 120vh;
+    object-fit: cover;
 }
 .logo-container{
     display: flex;
@@ -118,8 +136,9 @@ width: 8rem;
 .content-container{
     background-color: var(--white-color);
     color: var(--black-color);
-    width: 100%;
-    flex: 1;
+    flex: 0 1 auto;
+    /* width: 500px; */
+    /* max-height: 120vh; */
 }
 
 .content-container > div > p,
@@ -137,33 +156,68 @@ width: 8rem;
 
 .form-container > form > div.form-row{
     display: flex;
-    justify-content: center;
+    flex: 0 ;
+    justify-content: flex-start;
     align-items: center;
-    gap: 1rem;
+    gap: 4rem;
+    /* min-width: 50rem;  */
+    margin-top: 2.5rem; 
 }
 .content-container > div.form-container > p{
 margin-bottom: 1.5rem;
 }
 
-/* input{
-    position: absolute;
-}
-label{
-    position: relative;
+/* .div.right-input, .div.left-input{
+    margin-bottom: 10rem;   
 } */
+label{
+    text-wrap: nowrap;
+    width: fit-content;
+    align-self: start;
+    font-size: 0.8rem;
+    padding-left: .5em;
+    padding-right: .5em;
+    position: absolute;
+    transform: translate(.5rem, -45%);
+    z-index: 1;
+    background-color: var(--form-background);
+}
+
+input {
+    display: flex;
+    flex-shrink: 1;
+    padding: 16px;
+    border: 1px solid black !important;
+    border-radius: .3rem;
+    font-family: inherit;
+    width: 20rem;
+}
 
 .header, .form-container, .footer{
-    padding: 2rem;  
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 2rem 3rem;  
 }
-
+.footer{
+    box-sizing: border-box;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
  .form-container{
    background-color: var(--form-background);
    /* background-color: var(--black-color);
     color: var(--beige-color); */
  }
 
+ form {
+    display: flex;
+    flex-direction: column;
+ }
+
  button{
-    width: 20rem;
+    width: 14rem;
     background-color: var(--black-color);
     color: var(--beige-color);
     border: 1px solid var(--black-color);
