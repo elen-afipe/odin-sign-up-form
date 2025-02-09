@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -32,40 +33,48 @@
                 <p>You <span class="italic">know</span> you want to.</p>
             </div>
             <div class="form-container">
-                <p class="form-row">Go ahead and join us!</p>
-                <form action="" method="post">
+                <p class="form-row">Go ahead and join us! <span>(all fields are required)</span></p>
+                <form id="form" action="" method="get">
                         <div class="form-row">
                             <div class="right-input">
                                 <label for='first-name'>First name</label>
-                                <input id='first-name' name='first-name' type='text' >
+                                <input id='first-name' name='first-name' type='text' minlength="2" pattern="^[\p{L}\-]+$" title="Name should contain letters and hyphen only" required>
+                                <span class="validity"></span>
                             </div>
 
                             <div class="left-input">
                                 <label for='last-name'>Last name</label>
-                                <input id='last-name' name='last-name' type='text' >
+                                <input id='last-name' name='last-name' type='text' minlength="2" pattern="^[\p{L}\-]+$" title="Name should contain letters and hyphen only" required>
+                                <span class="validity"></span>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="right-input">
                                 <label for="email">Email</label>
-                                <input id='email' name='email' type="email" >
+                                <input id='email' name='email' type="email" required>
+                                <span class="validity"></span>
                             </div>
 
                             <div class="left-input">
                                 <label for="phone">Phone number</label>
-                                <input id='phone' name='phone' type="tel" >
+                                <input id='phone' name='phone' type="tel" minlength="9"
+                                maxlength="15"  pattern="^\d{9,14}$" title="Enter 9-15 digits, including code number, without +" required>
+                                <span class="validity"></span>
                             </div>
                         </div>
                         <div class="form-row">
                         <div class="right-input">
                             <label for="password">Password</label>
-                            <input type="password" name="password" type="password">
+                            <input id="password" name="password" type="password" minlength="4" maxlength="15" title="Password should contain from 4 to 15 symbols" required>
                         </div>
                         <div class="left-input">
                             <label for="confirm-password">Confirm password</label>
-                            <input type="confirm-password" name="confirm-password" type="password">
+                            <input id="confirm-password" name="confirm-password" type="password" minlength="4" maxlength="15" title="Password should contain from 4 to 15 symbols" required>
+                            <span class="validity"></span>
                         </div>
                         </div>
+
+                        <div class="password-check-text"><span class="password-validity"></span></div>
                 
             </div>
             <div class="footer">

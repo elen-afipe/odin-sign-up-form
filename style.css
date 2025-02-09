@@ -49,33 +49,29 @@ body {
     font-family: inherit;
     border: none;
     border-radius: .3rem;
-    caret-color: var(--black-color); /* Pour le I quand on édite */
+    caret-color: var(--black-color); 
     color: var(--black-color);
     background: var(--black-color);
-    /* webkit autofill */
     -webkit-font-feature-settings: off;
-    -webkit-text-fill-color: var(--black-color); /* Surcharge la font color d'autofill */
-    -webkit-background-clip: text; /* Supprime le background autofill, utile pour le border radius */
-    box-shadow: 0 0 0 50px var(var(--black-color)) inset; /* Ajoute un fake background à base d'ombrage aplatit */
-}
+    -webkit-text-fill-color: var(--black-color); 
+    -webkit-background-clip: text; 
+    box-shadow: 0 0 0 50px var(var(--black-color)) inset; 
+    }
 
- /* styles */
- /* *{
-   
- } */
  :root {
-    --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Segoe UI Symbol";
     --beige-color: #a98f7d;
-    /* --beige-color: #a68772; */
     --brown-color: #7f5340;
     --black-color: #050505d7;
     --green-color: #3b6827;
     --white-color: #f5f5f5dd;
+    --red-color: #e35c38;
+    --lower-shadow: 0 0.4rem 0.2rem 0 rgba(0, 0, 0, 0.055);
     --logo-background: rgba(0, 0, 0, 0.34);
     --form-background: rgba(255, 255, 255, 0.998);
 }
 *{
-    font-family: 'merriweather_sans-regular';
+    font-family: 'merriweather_sans-regular', var(--system-ui);
 }
 .container {
     display: flex;
@@ -90,8 +86,8 @@ body {
 
 .visuals-container{
     position: relative;
-    width: 40%;
-
+    width: 500px;
+    overflow: hidden;
 }
 .sidebar-pic{
     height: 120vh;
@@ -105,7 +101,7 @@ body {
     background-color: var(--logo-background);
     color: white;
     bottom: 6rem;
-    padding: 4rem;
+    padding: 3.5rem;
     width: 100%;
     gap: 40px;
 }
@@ -137,18 +133,17 @@ width: 8rem;
     background-color: var(--white-color);
     color: var(--black-color);
     flex: 0 1 auto;
-    /* width: 500px; */
-    /* max-height: 120vh; */
 }
 
-.content-container > div > p,
-.form-container > form > div.form-row
+.content-container > div > p
 {
-    margin-top: 1rem; 
-    margin-bottom: 1rem; 
+    margin-top: 0.5rem; 
+    margin-bottom: 0.5rem; 
 }
-
-.content-container > div.header > p,
+.header > p:first-of-type{
+    padding-right: 2rem;
+}
+.content-container > div > p,
 .content-container > div.form-container > p
 {
     font-size: 1.2rem;
@@ -160,16 +155,14 @@ width: 8rem;
     justify-content: flex-start;
     align-items: center;
     gap: 4rem;
-    /* min-width: 50rem;  */
-    margin-top: 2.5rem; 
-}
-.content-container > div.form-container > p{
-margin-bottom: 1.5rem;
+    margin-top: 2rem; 
 }
 
-/* .div.right-input, .div.left-input{
-    margin-bottom: 10rem;   
-} */
+.form-container > p > span{
+font-size: 0.7rem;
+opacity: 0.7;
+}
+
 label{
     text-wrap: nowrap;
     width: fit-content;
@@ -186,34 +179,57 @@ label{
 input {
     display: flex;
     flex-shrink: 1;
-    padding: 16px;
-    border: 1px solid black !important;
+    padding: 0.6rem;
+    border: 1px solid black;
     border-radius: .3rem;
     font-family: inherit;
     width: 20rem;
+}
+.left-input, .right-input{
+    display: flex;
+    flex-direction: row;
 }
 
 .header, .form-container, .footer{
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: 2rem 3rem;  
+    padding: 2rem 1.5rem; 
+   
+}
+.header{
+    padding: 2rem 1.5rem; 
+    justify-content: end; 
 }
 .footer{
     box-sizing: border-box;
     display: flex;
     flex: 1;
     flex-direction: column;
+    padding: 1.5rem 2rem;  
 }
  .form-container{
    background-color: var(--form-background);
-   /* background-color: var(--black-color);
-    color: var(--beige-color); */
+   padding-bottom: 0.5rem;
+   box-shadow: var(--lower-shadow);
  }
 
  form {
     display: flex;
     flex-direction: column;
+ }
+
+ .password-check-text{
+    min-height: 2rem;
+    margin-top: 0;
+ }
+ 
+#form > div.form-row:nth-last-of-type(2){
+    margin-bottom: 0;
+ }
+ .password-check-text > span{
+    color:var(--red-color);
+    font-size: 0.7rem;
  }
 
  button{
@@ -223,13 +239,31 @@ input {
     border: 1px solid var(--black-color);
     border-radius: 10px;
     padding: 0.7rem 0.9rem;
+    margin-bottom: 1.4rem;
+    transition: background-color .2s ease-in;
+    box-shadow: var(--lower-shadow);
 }
 
-/* general */
+/* states */
 
 span.italic{
     font-style: italic;
     font-size: inherit;
+}
+
+button:hover{
+    cursor: pointer;
+    opacity: 0.90;
+}
+
+button:focus{
+    cursor: pointer;
+    border: 1px solid var(--black-color);
+    border-style: double;
+}
+
+button:active{
+    opacity: 0.7;
 }
 
 a{
@@ -244,5 +278,49 @@ a:visited{
 }
 
 
-/* problems
-logo-container does not fit when zooming */
+/* focus */
+input:focus:invalid {
+    border: 2px solid var(--black-color) !important;
+}
+
+
+/* error */
+input.error-input:invalid {
+    border: 2px solid var(--red-color);
+}
+
+/* error */
+input.error-input:invalid + span::after{
+    position: absolute;
+    content: "✖";
+    padding-left: 5px;
+    color: var(--red-color) !important;
+}
+
+input.error-input{
+    border: 2px solid var(--red-color);
+}
+
+
+  /* valid */
+input.valid-input:valid{
+    border: 2px solid var(--green-color) !important;
+}
+
+input.valid-input{
+    border: 2px solid var(--green-color) !important;
+}
+
+input.valid-input:valid + span::after{
+    position: absolute;
+    content: "✓";
+    padding-left: 5px;
+    color: var(--green-color);
+  }
+
+/* focus */
+input:focus {
+    border: 2px solid var(--black-color); 
+}
+
+
